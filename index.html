@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <html>
+        <head>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <style>
+            .done {
+            text-decoration: line-through;
+            }
+            body{
+            position:absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            }
+        </style>
+        </head>
+        <body>
+        <form id="form">
+        <h1>
+        lista de Tarefas
+        </h1>
+            <input type="text" required placeholder="Nome da tarefa" id="task-name">
+            <button type="submit">Cadastrar</button>
+        </form>
+        <li id="task-list">
+        </li>
+        <script>
+            $("#form").submit(function(event) {
+            event.preventDefault();
+            var taskName = $("#task-name").val();
+            $("#task-list").append("<li>" + taskName + "</li>");
+            $("#task-name").val("");
+            
+            });
+            $("#task-list").on("click", "li", function() {
+            $(this).toggleClass("done");
+            
+            });
+        </script>
+        </body>
+    </html>
+</html>
